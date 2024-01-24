@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory planner > Vendor Attributes</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="menus">
+                <ul class="menu-listing">
+                    <li><a href="index.html">
+                        <img src="icon/home.png" alt="overview-icon" class="icons">
+                        <p>Overview</p>
+                    </li></a>
+                    <li><a href="replenishment.html">
+                        <img src="icon/data-security.png" alt="replenishment-icon" class="icons">
+                          <p>Replenishment</p></li></a>
+                      <li><a href="editforecast.html">
+                        <img src="icon/edit.png" alt="edit forecast" class="icons">
+                          <p>Edit Forecast</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/phonebook.png" alt="edit Catalog" class="icons">
+                          <p>Catalog</p>
+                        <img src="icon/menu-arrow.png" class="submenu" onclick="openmenu()"></li></a>
+                        <div class="submenu" id="catalog-menu">
+                            <ul>
+                                <li><a href="vendors.html">Vendors</a></li>
+                                <li class="heading">Variants/Bundles</li>
+                                <li class="side"><a href="forecastsetting.html">Forecast Setting</a></li>
+                                <li class="side"><a href="vendorattributes.html">Vendor Attributes</a></li>
+                                <li class="side"><a href="listing.html">Listings</a></li>
+                                <li class="side"><a href="#">Warehouses</a></li>
+                                <li class="side"><a href="#">bundles</a></li>
+                                <li class="side"><a href="#">Assembles</a></li>
+                            </ul>
+                        </div>
+                      <li><a href="#">
+                        <img src="icon/clipboard.png" alt="stock orders" class="icons">
+                          <p>Stock Orders</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/shop.png" alt="Overstock" class="icons">
+                          <p>Overstock</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/calculator.png" alt="open-to-Buy" class="icons">
+                          <p>Open-to-Buy</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/report.png" alt="reports" class="icons">
+                          <p>Reports</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/exit.png" alt="hide labels" class="icons">
+                          <p>Hide Labels</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/refresh.png" alt="Sync" class="icons">
+                          <p>Sync</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/account.png" alt="account" class="icons">
+                          <p>Account</p></li></a>
+                </ul>
+            </div>
+        </div>
+        <div class="subcontainer">
+            <div class="topbox">
+                <div class="heading">
+                   <p>Catalog > Bundles & Production</p> 
+                </div>
+                <div class="filter-selectbox">
+                    <select name="forecast" id="forcast-action">
+                        <option value="#">bundles</option>
+                        <option value="#">Warehouses</option>
+                        <option value="#">Forecast Setting</option>
+                        <option value="#">Vendor Attributes</option>
+                        <option value="#">Listings</option>
+                        <option value="#">Assembles</option>
+                    </select>
+                </div>
+                <div class="filter-serachbox"> <form><input type="submit" value="filter" class="search-filter"><input type="search" name="input-filter" class="input-filter"></form></div>
+            </div>
+            <div class="settings-replenishment" id="settings-replenishment"><img src="icon/settings.png"/></div>
+            <div class="more-tools" id="more-tools">
+                <h2>Hide / Visible Column</h2>
+                <table class="show">
+                    <tr>
+                        <td><a onclick="editforcast('type')" id="type">Type</a></td>
+                    </tr>
+                    <tr>
+                        <td><a onclick="editforcast('source')" id="source">Source</a></td>
+                    </tr>
+                   <tr>
+                    <td><a onclick="editforcast('mivariants')" id="mivariants">Manage IP Variants </a></tr></td>
+                </tr> 
+                <tr>
+                    <td><a onclick="editforcast('error')" id="error">Error</a></tr></td>
+                </tr> 
+                <tr>
+                    <td><a onclick="editforcast('quantity')" id="quantity">Quantity</a></tr></td>
+                </tr> 
+                <tr>
+                    <td><a onclick="editforcast('price')" id="price">Price</a></tr></td>
+                </tr> 
+                <tr>
+                    <td><a onclick="editforcast('cprice')" id="cprice">Cost Price</a></tr></td>
+                </tr> 
+                
+                </table>
+            </div>
+            <div class="replenishment-datatb">
+                <table>
+                    <tr>
+                        <td>  <input type="checkbox"
+                            name="selectall"
+                            id="selectall" 
+                            value="1" class="selectall" onchange="selectall()"></td>
+                            <td class="name">Name</td>
+                        <td class="type">Type</td>
+                        <td class="source">Source</td>
+                        <td class="mivariants">Manage IP Variants </td>
+                        <td class="error">Error</td>
+                        <td class="quantity">Quantity</td>
+                        <td class="price">Price</td>
+                        <td class="cprice">Cost Price</td>
+                    </tr>
+                    <tr>
+                        <td>  <input type="checkbox"
+                            name="selectall"
+                            id="selectall" 
+                            value="1" class="selectall" onchange="selectall()"></td>
+                            <td class="name name2">dgshdfhfdjhgfagdfhfdhfghfsh <span class="popup-btn"><img src="icon/table/question-mark.png"></span>
+                                <section class="popup">
+                                  <div class="popup__content">
+                                    <div class="close">
+                                      <span><img src="icon/table/close-icon.png"></span>
+                                    </div>
+                        <div class="all-tabs" id="all-tab">
+                            <div class="header">10 Pack Cookies (SKU CP-001)</div>
+                            <div class="tap-header">
+                                <ul>
+                                    <li><a onclick="addfunction(this)" class="activetab list" id="fsetting">Forecast Settings</a>
+                                    </li><li><a onclick="addfunction(this)" 
+                                        class="list" id="vendorattr">Vendor Attributes</a></li>
+                                    <li><a onclick="addfunction(this)" id="listing"  class="list">Listings</a></li>
+                                    <li><a onclick="addfunction(this)" id="warehouse"  class="list">Warehouses</a></li>
+                                    <li><a onclick="addfunction(this)" id="production"  class="list">Bundles &amp; Production</a></li>
+                                    <li>More<span onclick="showul()"><img src="icon/table/submenu-arrow.png" alt=""></span>
+                                        <ul class="sublist">
+                                            <li><a onclick="addfunction(this)" id="onorder"  class="list">On Order</a></li>
+                                            <li><a onclick="addfunction(this)" id="history"  class="list">History</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>                                
+                            </div>
+                            <div class="forecast" id="forecast">
+                            <div class="forecast-area">
+                                <div class="foresta-left">
+                                    <div class="switchoff">
+                                        <label class="switch">
+                                            <input type="checkbox" checked>
+                                            <span class="slider round"></span>
+                                          </label>
+                                          <span><b>Replenishable</b></span>
+                                    </div>
+                                         
+                                      <div class="para"> <small>The replenishment is computed for replenishable variants only.</small>
+                                        </div>
+                                        <div class="headingh3"><h3>General </h3></div>
+                                        <div class="switchoff">
+                                            <label class="switch">
+                                                <input type="checkbox" checked>
+                                                <span class="slider round"></span>
+                                              </label>
+                                              <span><b>Use Custom Forecasting Settings</b></span>
+                                        </div>
+                                             
+                                          <div class="para"> <small>Enable to customize forecasting for this variant. The default forecasting settings are defined here.</small>
+                                            </div>
+                                            <div class="switchoff">
+                                                <label class="switch">
+                                                    <input type="checkbox" checked>
+                                                    <span class="slider round"></span>
+                                                  </label>
+                                                  <span><b>Use Stockouts History</b></span>
+                                            </div>
+                                                 
+                                              <div class="para"> <small>Enable to adjust the forecast based on past stockouts during the forecasting sales period.</small>
+                                                </div>
+                               
+                            </div>
+                            <div class="foresta-right">
+                                <h3>Forecasting Method</h3>
+                                <select >
+                                    <option value="average">Recent Sales and Trends</option>
+                                    <option value="last_sales">Last Sales</option>
+                                    <option value="seasonal">Seasonal</option>
+                                </select>
+                                <br>
+                                <small>Forecasting for non-seasonal items. Computed from average sales during the period
+                                  <img src="icon/date.png"><input type="text" id="from" name="from" class="date-picker">-<input type="text" id="to" name="to" class="date-picker">
+                                   , adjusted for trend if/when a sales pattern is recognized for the last <input type="text" name="month" id="month" value="3"> months. </small>
+                                </div>
+                        </div>
+                 
+                        <div class="bottom-sec-popup">
+                            <h3>Combine Sales/Stock</h3>
+                            <small>Combine sales (and/or stock) from other variants to adjust the forecast. Use when the new variant has no sales history and is expected to have the same demand as old variants. No impact on the old variants. </small>
+                            <div class="small-table">
+                                <table>
+                                    <tr>
+                                        <td></td>
+                                        <td>Name</td>
+                                        <td>Percent</td>
+                                        <td>Merge Stock</td>
+                                        <td>Stop Combine After</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a><img src="icon/table/delete-icon.png"></a></td>
+                                        <td>
+                                            <p>French Connection, straw bag</p>
+                                            <small>FRENCH-CONN  12234567890132</small>
+                                        </td>
+                                        <td><input type="text" name="percent" id="percent"></td>
+                                        <td><input type="checkbox" name="select-item" value="1"></td>
+                                        <td><input type="date" name="after-combine" id="after-combine"></td>
+                                    </tr>
+                                </table>
+                                <button onclick="addVariants()">Add Variants</button>
+                            </div>
+                            <div class="bottom-button-sec">
+                                <button>Save</button>
+                                <button>Discard</button>
+                            </div>
+    
+                        </div>
+                    </div>  
+                    <div class="vendor-attr" id="vendor-attr">
+                        <h3>Vendors</h3>
+                        <div class="vendor-table">
+                                <table>
+                                    <tr>
+                                        <td></td>
+                                        <td>Vendor</td>
+                                        <td>Vendor Reference</td>
+                                        <td>Vendor Product Name</td>
+                                        <td>Cost Price</td>
+                                        <td>Landing Cost Price</td>
+                                        <td>MOQ</td>
+                                        <td>UOM</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="single-item" id="single-item"></td>
+                                        <td>
+                                            <select name="supplier" id="supplier">
+                                                <option value="supplier-china">Supplier China</option>
+                                                <option value="supplier-us">Supplier Us</option>
+                                            </select>
+                                        </td>
+                                        <td><input type="text" name="vendor" id="vendor"></td>
+                                        <td><input type="text" name="vreference" id="vreference"></td>
+                                        <td><input type="text" name="cprice" id="cprice"></td>
+                                        <td><input type="text" name="lcprice" id="lcprice"></td>
+                                        <td><input type="text" name="moq" id="moq"></td>
+                                        <td><input type="text" name="uom" id="uom"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="single-item" id="single-item"></td>
+                                        <td>supplier us
+                                            <p><small>Shopify US</small></p>
+                                        </td>
+                                        <td><input type="text" name="vendor" id="vendor"></td>
+                                        <td><input type="text" name="vreference" id="vreference"></td>
+                                        <td><input type="text" name="cprice" id="cprice"></td>
+                                        <td><input type="text" name="lcprice" id="lcprice"></td>
+                                        <td><input type="text" name="moq" id="moq"></td>
+                                        <td><input type="text" name="uom" id="uom"></td>
+                                    </tr>
+                                </table>
+                        </div>
+                        <div class="add-vendor"><button>Add Variant Vendor</button></div>
+                    </div>
+                    <div class="listing-sec">
+                        <h3>Listings</h3>
+                        <div class="switchoff">
+                            <label class="switch">
+                                <input type="checkbox" checked="">
+                                <span class="slider round"></span>
+                              </label>
+                              <span><b>Manual Link using Master SKU</b></span>
+                            
+                            </div><p><small>When enabled, only listings with specified Master SKU are linked.</small></p>
+                         <div class="tcell">
+                            <table>
+                                <tr>
+                                    <td>Connection</td>
+                                    <td>Removed</td>
+                                    <td>Linked by</td>
+                                    <td>ID</td>
+                                    <td>Name</td>
+                                    <td>SKU</td>
+                                    <td>Barcode</td>
+                                    <td>ASIN</td>
+                                    <td>FNSKU</td>
+                                    <td>Tracked Inventory</td>
+                                    <td>Brand</td>
+                                    <td>Category</td>
+                                    <td>Tags</td>
+                                </tr>
+                                <tr>
+                                    <td>Shopify US</td>
+                                    <td> </td>
+                                    <td>Barcode</td>
+                                    <td>C-001</td>
+                                    <td>Cookie</td>
+                                    <td>C-001</td>
+                                    <td>1623</td>
+                                    <td> </td>
+                                    <td> </td>
+                                    <td><img src="icon/table/correct.png"/></td>
+                                    <td>Demo Food</td>
+                                    <td>Food</td>
+                                    <td>food</td>
+                                </tr>
+                                    </table>
+                         </div>  
+                    </div>
+                       
+                                  </div>
+                                  <div class="select-varients">
+                                    <img src="icon/table/exit-popup.png" onclick="exitVariants()">
+                                    <h2>Select Variants</h2>
+                                    <div class="search-varients">
+                                        <input type="search" name="search-varients" id="search-varient">
+                                    </div>
+                                    <div class="search-action-box">
+                                        <input type="submit" value="Search" class="search-varient">
+                                    </div>
+                                    <div class="settings-replenishment" id="settings-replenishment"><img src="icon/settings.png" onclick="openFiltering(this)"/></div>
+                                    <div class="more-tools" id="more-tools2">
+                                        <h2>Hide / Visible Column</h2>
+                                        <table class="show">
+                                        <tr>
+                                            <td><a onclick="editforcast('vid')" id="vid">Variant Id</a></tr></td>
+                                        </tr> 
+                                        <tr>
+                                            <td><a onclick="editforcast('sku')" id="sku">SKU</a></tr></td>
+                                        </tr> 
+                                        <tr>
+                                            <td><a onclick="editforcast('fnsku')" id="fnsku">FNSKU</a></tr></td>
+                                        </tr> 
+                                        <tr>
+                                            <td><a onclick="editforcast('asin')" id="asin">ASIN</a></tr></td>
+                                        </tr> 
+                                        <tr>
+                                            <td><a onclick="editforcast('barcode')" id="barcode">Barcode</a></tr></td>
+                                        </tr> 
+                                        </table>
+                                    </div>
+                                    <table>
+                                        <tr>
+                                            <td><input type="checkbox" name="select-all" id="selectall" value="1"></td>
+                                            <td>Name</td>
+                                            <td class="vid">Variant ID</td>
+                                            <td class="sku">SKU</td>
+                                            <td class="fnsku">FNSKU</td>
+                                            <td class="asin">ASIN</td>
+                                            <td class="barcode">Barcode</td>
+                                        </tr> 
+                                        <tr>
+                                            <td><input type="checkbox" name="select-all" id="selectall" value="1"></td>
+                                            <td><p>Mango, pineapple long dress S Purple</p>
+                                            <small>SKUSKU-7FF73F50 Barcode 12234567800 ASINB01 DEMO20</small>
+                                            </td>
+                                            <td class="vid">c1_SKU-7FF73F50</td>
+                                            <td class="sku">SKU-7FF73F50</td>
+                                            <td class="fnsku">X00DEMO20</td>
+                                            <td class="asin">B01DEMO20</td>
+                                            <td class="barcode">12234567800</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" name="select-all" id="selectall" value="1"></td>
+                                            <td><p>Mango, pineapple long dress S Purple</p>
+                                            <small>SKUSKU-7FF73F50 Barcode 12234567800 ASINB01 DEMO20</small>
+                                            </td>
+                                            <td class="vid">c1_SKU-7FF73F50</td>
+                                            <td class="sku">SKU-7FF73F50</td>
+                                            <td class="fnsku">X00DEMO20</td>
+                                            <td class="asin">B01DEMO20</td>
+                                            <td class="barcode">12234567800</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" name="select-all" id="selectall" value="1"></td>
+                                            <td><p>Mango, pineapple long dress S Purple</p>
+                                            <small>SKUSKU-7FF73F50 Barcode 12234567800 ASINB01 DEMO20</small>
+                                            </td>
+                                            <td class="vid">c1_SKU-7FF73F50</td>
+                                            <td class="sku">SKU-7FF73F50</td>
+                                            <td class="fnsku">X00DEMO20</td>
+                                            <td class="asin">B01DEMO20</td>
+                                            <td class="barcode">12234567800</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" name="select-all" id="selectall" value="1"></td>
+                                            <td><p>Mango, pineapple long dress S Purple</p>
+                                            <small>SKUSKU-7FF73F50 Barcode 12234567800 ASINB01 DEMO20</small>
+                                            </td>
+                                            <td class="vid">c1_SKU-7FF73F50</td>
+                                            <td class="sku">SKU-7FF73F50</td>
+                                            <td class="fnsku">X00DEMO20</td>
+                                            <td class="asin">B01DEMO20</td>
+                                            <td class="barcode">12234567800</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" name="select-all" id="selectall" value="1"></td>
+                                            <td><p>Mango, pineapple long dress S Purple</p>
+                                            <small>SKUSKU-7FF73F50 Barcode 12234567800 ASINB01 DEMO20</small>
+                                            </td>
+                                            <td class="vid">c1_SKU-7FF73F50</td>
+                                            <td class="sku">SKU-7FF73F50</td>
+                                            <td class="fnsku">X00DEMO20</td>
+                                            <td class="asin">B01DEMO20</td>
+                                            <td class="barcode">12234567800</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" name="select-all" id="selectall" value="1"></td>
+                                            <td><p>Mango, pineapple long dress S Purple</p>
+                                            <small>SKUSKU-7FF73F50 Barcode 12234567800 ASINB01 DEMO20</small>
+                                            </td>
+                                            <td class="vid">c1_SKU-7FF73F50</td>
+                                            <td class="sku">SKU-7FF73F50</td>
+                                            <td class="fnsku">X00DEMO20</td>
+                                            <td class="asin">B01DEMO20</td>
+                                            <td class="barcode">12234567800</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" name="select-all" id="selectall" value="1"></td>
+                                            <td><p>Mango, pineapple long dress S Purple</p>
+                                            <small>SKUSKU-7FF73F50 Barcode 12234567800 ASINB01 DEMO20</small>
+                                            </td>
+                                            <td class="vid">c1_SKU-7FF73F50</td>
+                                            <td class="sku">SKU-7FF73F50</td>
+                                            <td class="fnsku">X00DEMO20</td>
+                                            <td class="asin">B01DEMO20</td>
+                                            <td class="barcode">12234567800</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" name="select-all" id="selectall" value="1"></td>
+                                            <td colspan="6" class="allvariants">10 / 109 variants</td>
+                                        </tr> 
+                                    </table>
+                                    <div class="action-btn">
+                                        <div class="leftside-btn">
+                                            <div class="apply-btn">Apply</div>
+                                            <div class="cancel-btn">Cancel</div>
+                                        </div>
+                                        <div class="rightside-btn">
+                                            <div class="select-entries">
+                                                <select name="rentries" id="rentries">
+                                                <option value="10">10</option>
+                                                <option value="20">20</option>
+                                                <option value="50">50</option>
+                                                <option value="100">100</option>
+                                            </select>
+                                            </div>
+                                            <div class="first-page">
+                                                <a>First Page</a>
+                                            </div>
+                                            <div class="left">
+                                                <a href="#"><img src="icon/left.png"></a>
+                                             </div>
+                                             <div class="page-info">page 1/1</div>
+                                                <div class="right">
+                                                 <a href="#"><img src="icon/right.png"></a>
+                                             </div>
+                              
+                                        </div>
+                                    </div>
+                                  </div>
+                                </section></td>
+                        <td class="type">Bundle</td>
+                        <td class="source">Shopify US</td>
+                        <td class="mivariants"><input type="checkbox" name="mivariants" value="1" class="m1" checked disabled="disabled"></td>
+                        <td class="error"> </td>
+                        <td class="quantity"> </td>
+                        <td class="price"> 50.00</td>
+                        <td class="cprice"> </td>
+                     </tr>
+       
+                </table>
+            </div>
+            <div class="replenishment-feature">
+                <div class="left-side">
+                    <div class="button button-middle"><a id="openpopup">Convert Variant To Bundle</a></div>
+                    <!-- <div class="button button-middle"><a href="#">Export</a></div> -->
+                    <div class="select-box">
+                        <select name="import" id="import">
+                            <option value="">Import</option>
+                            <option value="bundles-assembles">Bundles/Assembles</option>
+                        </select>
+                    </div>
+  
+                    <button id="export">Export</button>
+
+                </div>
+               <div class="right-side">
+                <div class="entry-box">
+                    <select name="entries" id="entries" >
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
+                <div class="first-page">
+                    <a href="">First</a>
+                </div>
+                <div class="left">
+                   <a href="#"><img src="icon/left.png"></a>
+                </div>
+                <div class="page-info">page 1/1</div>
+                   <div class="right">
+                    <a href="#"><img src="icon/right.png"></a>
+                </div>
+ 
+                 </div>
+                </div>
+               
+               </div>
+                
+            </div>
+    </div>
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="js/jquery3.7.1.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script> -->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://cdn.canvasjs.com/jquery.canvasjs.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

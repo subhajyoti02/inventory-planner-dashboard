@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory planner > Replenishment</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="menus">
+                <ul class="menu-listing">
+                    <li><a href="index.html">
+                        <img src="icon/home.png" alt="overview-icon" class="icons">
+                        <p>Overview</p>
+                    </li></a>
+                    <li><a href="replenishment.html">
+                        <img src="icon/data-security.png" alt="replenishment-icon" class="icons">
+                          <p>Replenishment</p></li></a>
+                      <li><a href="editforecast.html">
+                        <img src="icon/edit.png" alt="edit forecast" class="icons">
+                          <p>Edit Forecast</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/phonebook.png" alt="edit Catalog" class="icons">
+                          <p>Catalog</p>
+                        <img src="icon/menu-arrow.png" class="submenu" onclick="openmenu()"></li></a>
+                        <div class="submenu" id="catalog-menu">
+                            <ul>
+                                <li><a href="vendors.html">Vendors</a></li>
+                                <li class="heading">Variants/Bundles</li>
+                                <li class="side"><a href="forecastsetting.html">Forecast Setting</a></li>
+                                <li class="side"><a href="vendorattributes.html">Vendor Attributes</a></li>
+                                <li class="side"><a href="listing.html">Listings</a></li>
+                                <li class="side"><a href="#">Warehouses</a></li>
+                                <li class="side"><a href="#">bundles</a></li>
+                                <li class="side"><a href="#">Assembles</a></li>
+                            </ul>
+                        </div>
+                      <li><a href="#">
+                        <img src="icon/clipboard.png" alt="stock orders" class="icons">
+                          <p>Stock Orders</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/shop.png" alt="Overstock" class="icons">
+                          <p>Overstock</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/calculator.png" alt="open-to-Buy" class="icons">
+                          <p>Open-to-Buy</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/report.png" alt="reports" class="icons">
+                          <p>Reports</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/exit.png" alt="hide labels" class="icons">
+                          <p>Hide Labels</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/refresh.png" alt="Sync" class="icons">
+                          <p>Sync</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/account.png" alt="account" class="icons">
+                          <p>Account</p></li></a>
+                </ul>
+            </div>
+        </div>
+        <div class="subcontainer">
+            <div class="topbox">
+                <div class="heading">
+                   <p>Replenishment</p> 
+                </div>
+            </div>
+            <div class="settings-replenishment" id="settings-replenishment"><img src="icon/settings.png"/></div>
+            <div class="more-tools" id="more-tools">
+                <h2>Hide / Visible Column</h2>
+                <table class="show">
+                    <tr>
+                        <td><a onclick="addcolumn('price')" id="price">Price</a></td>
+                    </tr>
+                    <tr>
+                        <td><a onclick="addcolumn('quantity')" id="quantity">Quantity</a></td>
+                    </tr>
+                   <tr>
+                    <td><a onclick="addcolumn('stock')" id="stock">Stock</a></tr></td>
+                </tr> 
+                
+                </table>
+            </div>
+            <div class="replenishment-datatb">
+                <table>
+                    <tr>
+                        <td>#</td>
+                        <td class="name">Name</td>
+                        <td class="color">Color</td>
+                        <td class="brand">Brand</td>
+                        <td class="price">Price</td>
+                        <td class="quantity">Quantity</td>
+                        <td class="stock">Stock</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td class="name">Cap</td>
+                        <td class="color">Red</td>
+                        <td class="brand">Lorem</td>
+                        <td class="price">$11</td>
+                        <td class="quantity">5</td>
+                        <td class="stock">Available</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="replenishment-feature">
+                <div class="left-side">
+                    <div class="button"><a href="#">Configure Warehouses</a></div>
+                    <div class="select-box">
+                        <select name="import" id="import">
+                            <option value="">Import</option>
+                            <option value="variant-settings">Variant Settings</option>
+                            <option value="stock-orders">Stock Orders</option>
+                            <option value="vendor-attributes">Vendor Attributes</option>                        
+                            <option value="vendors">Vendors</option>
+                            <option value="stockouts">Stockouts</option>
+                            <option value="stock-history">Stock History</option>
+                            <option value="forecast-override">Forecast Override</option>
+                            <option value="sales-orders">Sales Orders</option>
+                            <option value="sales-orders">Bundles/Assemblies</option>
+                            <option value="link-listings">Link Listings</option>
+    
+                        </select>
+                    </div>
+                </div>
+               <div class="right-side">
+                <div class="entry-box">
+                    <select name="entries" id="entries" >
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
+                <div class="first-page">
+                    <a href="">First</a>
+                </div>
+                <div class="left">
+                   <a href="#"><img src="icon/left.png"></a>
+                </div>
+                <div class="page-info">page 1/1</div>
+                   <div class="right">
+                    <a href="#"><img src="icon/right.png"></a>
+                </div>
+ 
+                 </div>
+                </div>
+               
+               </div>
+                
+            </div>
+    </div>
+    <script src="js/jquery3.7.1.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

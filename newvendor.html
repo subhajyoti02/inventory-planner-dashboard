@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory planner > Add Vendor</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="menus">
+                <ul class="menu-listing">
+                    <li><a href="index.html">
+                        <img src="icon/home.png" alt="overview-icon" class="icons">
+                        <p>Overview</p>
+                    </li></a>
+                    <li><a href="replenishment.html">
+                        <img src="icon/data-security.png" alt="replenishment-icon" class="icons">
+                          <p>Replenishment</p></li></a>
+                      <li><a href="editforecast.html">
+                        <img src="icon/edit.png" alt="edit forecast" class="icons">
+                          <p>Edit Forecast</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/phonebook.png" alt="edit Catalog" class="icons">
+                          <p>Catalog</p>
+                        <img src="icon/menu-arrow.png" class="submenu" onclick="openmenu()"></li></a>
+                        <div class="submenu" id="catalog-menu">
+                            <ul>
+                                <li><a href="vendors.html">Vendors</a></li>
+                                <li class="heading">Variants/Bundles</li>
+                                <li class="side"><a href="forecastsetting.html">Forecast Setting</a></li>
+                                <li class="side"><a href="vendorattributes.html">Vendor Attributes</a></li>
+                                <li class="side"><a href="listing.html">Listings</a></li>
+                                <li class="side"><a href="#">Warehouses</a></li>
+                                <li class="side"><a href="#">bundles</a></li>
+                                <li class="side"><a href="#">Assembles</a></li>
+                            </ul>
+                        </div>
+                      <li><a href="#">
+                        <img src="icon/clipboard.png" alt="stock orders" class="icons">
+                          <p>Stock Orders</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/shop.png" alt="Overstock" class="icons">
+                          <p>Overstock</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/calculator.png" alt="open-to-Buy" class="icons">
+                          <p>Open-to-Buy</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/report.png" alt="reports" class="icons">
+                          <p>Reports</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/exit.png" alt="hide labels" class="icons">
+                          <p>Hide Labels</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/refresh.png" alt="Sync" class="icons">
+                          <p>Sync</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/account.png" alt="account" class="icons">
+                          <p>Account</p></li></a>
+                </ul>
+            </div>
+        </div>
+        <div class="subcontainer">
+            <div class="topbox">
+                <div class="heading">
+                   <p>Vendors > New</p> 
+                </div>
+            </div>
+         <div class="settings-section">
+         <div class="heading"><p>Settings</p></div>
+         <div class="form-area">
+            <div class="left-section">
+                <div class="general-section">
+                    <h2 class="section-heading">General</h2>
+                    <div class="form-section">
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="form-section">
+                    <input type="text" name="name">
+                    </div>
+                 </div>
+                 <div class="general-section">
+                    <div class="form-section">
+                    <label for="email">Email</label>
+                    </div>
+                    <div class="form-section">
+                    <input type="text" name="email">
+                    </div>
+                 </div>
+                 <div class="general-section">
+                    <div class="form-section">
+                    <label for="name">Address</label>
+                    </div>
+                    <div class="form-section">
+                    <textarea name="address" id="" cols="31" rows="4"></textarea>
+                    </div>
+                 </div>
+            </div>
+            <div class="right-section">
+                <input type="checkbox" name="Variants" value="1" id="buttonchange" onchange="buttonchange()">
+                <h3 class="button-status">Enabled</h3>
+                <p class="subject" >Disable vendor if you do not plan to create purchase orders for them and to exclude it from the Calendar.</p>
+                <p><button type="button"  id="popup-subject" class="btn confirm nonitem" data-ok="OK" data-cancel="Cancel" data-text="Do you want to make all variants of this vendor non-replenishable?">Make variants non-replenishable</button></p>
+                <p><button type="button"  id="popup-subject" class="btn confirm item" data-ok="OK" data-cancel="Cancel" data-text="Do you want to make all variants of this vendor replenishable?">Make variants replenishable</button></p>
+
+                <div id="dialog">
+                  <div id="dialog-content">
+                    <div id="dialog-text"></div>
+                    <div id="dialog-actions">
+                        <button type="button" id="dialog-ok"></button>
+                        <button type="button" id="dialog-cancel"></button>
+                    </div>
+                  </div>
+                </div>
+                <div class="general-section">
+                    <div class="form-section">
+                    <label for="name">Internal Notes</label>
+                    </div>
+                    <div class="form-section">
+                    <textarea name="address" id="" cols="31" rows="4"></textarea>
+                    </div>
+                 </div>
+                
+            </div>
+         </div>
+         <h2 class="section-heading">Default periods</h2>
+
+         <div class="form-area">
+            <div class="left-section">
+                <div class="general-section">
+                    <div class="form-section">
+                       <p class="gline">The default periods are set for all new variants of this vendor. You can override values for each variant in the Replenishment report. Use the button below to reset all variants to these values.</p>
+                       <button id="btnOpenForm">Update periods for variants</button>
+
+<div class="form-popup-bg">
+  <div class="form-container">
+    <button id="btnCloseForm" class="close-button">X</button>
+    <br>
+    <p class="popup-para">Would you like to update lead times and days of stock for all vendor's variants? </p>
+    <br>
+    <form action="">
+      <table>
+        <tr>
+            <td>Update?</td>
+            <td>Warehouse</td>
+            <td>Lead Time(days)</td>
+            <td>Days of Stock(days)</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="addfield"></td>
+            <td>Shopify US Warehouse</td>
+            <td>2</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="addfield"></td>
+            <td>Shopify UK Warehouse</td>
+            <td>2</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="addfield"></td>
+            <td>FBA US</td>
+            <td>2</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="addfield"></td>
+            <td>FBA CA</td>
+            <td>2</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="addfield"></td>
+            <td>FBA MX</td>
+            <td>2</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="addfield"></td>
+            <td>FBA</td>
+            <td>2</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="addfield"></td>
+            <td>FBA UK</td>
+            <td>2</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="addfield"></td>
+            <td>Combined All</td>
+            <td>2</td>
+            <td>4</td>
+        </tr>   
+      </table>
+      <button>Submit</button>
+    </form>
+  </div>
+</div>
+                    </div>
+                   
+                 </div>
+            </div>
+            <div class="right-section">
+                <form action="">
+                    <table>
+                      <tr>
+                          <td>Warehouse</td>
+                          <td>Lead Time(days)</td>
+                          <td>Days of Stock(days)</td>
+                      </tr>
+                      <tr>
+                          <td>Shopify US Warehouse</td>
+                          <td><input type="text" name="usleadtime" id="usleadtime"></td>
+                          <td><input type="text" name="usdaysofstock" id="usdaysofstock"></td>
+                      </tr>
+                      <tr>
+                          <td>Shopify UK Warehouse</td>
+                          <td><input type="text" name="ukleadtime" id="ukleadtime"></td>
+                          <td><input type="text" name="ukdaysofstock" id="ukdaysofstock"></td>
+                      </tr>
+                      <tr>
+                          <td>FBA US</td>
+                          <td><input type="text" name="fbausleadtime" id="fbausleadtime"></td>
+                          <td><input type="text" name="fbausdaysofstock" id="fbausdaysofstock"></td>
+                      </tr>
+                      <tr>
+                          <td>FBA CA</td>
+                          <td><input type="text" name="caleadtime" id="caleadtime"></td>
+                          <td><input type="text" name="cadaysofstock" id="cadaysofstock"></td>
+                      </tr>
+                      <tr>
+                          <td>FBA MX</td>
+                          <td><input type="text" name="mxleadtime" id="mxleadtime"></td>
+                          <td><input type="text" name="mxdaysofstock" id="mxdaysofstock"></td>
+                      </tr>
+                      <tr>
+                          <td>FBA</td>
+                          <td><input type="text" name="fbaleadtime" id="fbaleadtime"></td>
+                          <td><input type="text" name="fbadaysofstock" id="fbadaysofstock"></td>
+                      </tr>
+                      <tr>
+                          <td>FBA UK</td>
+                          <td><input type="text" name="fbaukleadtime" id="fbaukleadtime"></td>
+                          <td><input type="text" name="fbaukdaysofstock" id="fbaukdaysofstock"></td>
+                      </tr>
+                      <tr>
+                          <td>Combined All</td>
+                          <td><input type="text" name="combineleadtime" id="combineleadtime"></td>
+                          <td><input type="text" name="combineofstock" id="combineofstock"></td>
+                      </tr>   
+                    </table>
+            </div>
+         </div>
+         <h2 class="section-heading">Payment and shipment</h2>
+         <div class="payment">
+            <div class="method">
+                <div class="row1">Shipment Method</div>
+                <div class="row2"><input type="text" name="smethod"></div>
+            </div>
+            <div class="terms">
+                <div class="row1">Payment Terms</div>
+                <div class="row2"><input type="text" name="pterms"></div>
+            </div>
+            <div class="currency">
+                <div class="row1">Currency</div>
+                <div class="row2"><input type="text" name="currency"></div>
+            </div>
+            <div class="tax"> 
+                <div class="row1">Default Tax</div>
+                <div class="row2"><input type="text" name="currency"></div>
+            </div>
+            <div class="Discount"> 
+                <div class="row1">Discount</div>
+                <div class="row2"><input type="text" name="currency"></div>
+            </div>
+        </div>
+        <div class="purchase-orders">
+            <h2 class="section-heading">Purchase Orders </h2>
+            <div class="purchase-orders-form">
+                <div class="left-section"><p class="sub-title">Minimum Order Quantity (MOQ) Type </p>
+                    <label class="container">Disabled
+                        <input type="radio" checked="checked" name="radio">
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="container">For variants 
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="container">For products 
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="container">For purchase orders 
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                      </label>
+                      <div id="form1" class="general-section">
+                        <div class="form-section">
+                            <label for="minbudget">Minimum Purchase Budget</label>
+                        </div>
+                        <div class="form-section">
+                            <input type="text" name="min-budget">
+                        </div>
+                        <div class="form-section">
+                            <label for="minbudget">Default PO Notes</label>
+                        </div>
+                        <div class="form-section">
+                            <textarea name="" id="" cols="31" rows="10"></textarea>
+                        </div>
+                        
+                        
+
+                      </div>
+                </div>
+                <div class="right-section"></div>
+            </div>
+            <h2 class="section-heading">Associated brands</h2>
+            <div class="brand-section">
+                <div class="left-brand-section">
+                    <p class="brand-para">Automatically associate current and future variants for a brand with the vendor.</p>
+                </div>
+                <div class="right-brand-section">
+                    <div class="brandsappend"></div>
+                    <a id="show">Add Brand</a>
+                   
+
+                    
+                    <div class="center hideform">
+                        <button id="close" style="float: right;">X</button>
+                        <form action="">
+                           <div class="brand">
+                            <h1>Add Brand</h1>
+                            <br>
+                            <div class="custom-select" style="width:200px;">
+                                <select>
+                                    <option value="burberry">burberry</option>
+                                    <option value="collette">collette</option>
+                                    <option value="demo-food">demo food</option>
+                                    <option value="demo-furniture">demo furniture</option>
+                                    <option value="french connection">french connection</option>
+                                    <option value="g-star">g-star</option>
+                                    <option value="harper">harper</option>
+                                    <option value="mango">mango</option>
+                                    <option value="paul-smith">paul smith</option>
+                                    <option value="unknown">unknown</option>
+                                </select>
+                              </div>
+                              <br>
+                              <br>
+                              <a onclick="additems()" class="additems">Add Brand</a>
+                              <br>
+                              <br>
+                           </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+            
+        </div>
+        <div class="custom-field">
+            <h2>Custom Fields</h2>
+            <p>Custom Fields can be set in Purchase Order and are visible in the purchase order PDF and CSV. Custom Fields and their global default values are defined in <a href="#">Settings / Purchase Orders</a>. In the table below, you can customize the default value for this vendor.</p>
+        </div>
+
+         </div>
+         <div class="submit-section">
+            <div class="submit-button">
+                <button>Submit</button>
+            </div>
+            <div class="cancel-button">
+                <button>Cancel</button>
+            </div>
+        </div>
+
+
+ 
+               
+               </div>
+                
+            </div>
+    </div>
+
+    <script src="js/jquery3.7.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.canvasjs.com/jquery.canvasjs.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

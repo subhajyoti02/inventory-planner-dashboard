@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory planner > Vendor Attributes</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="menus">
+                <ul class="menu-listing">
+                    <li><a href="index.html">
+                        <img src="icon/home.png" alt="overview-icon" class="icons">
+                        <p>Overview</p>
+                    </li></a>
+                    <li><a href="replenishment.html">
+                        <img src="icon/data-security.png" alt="replenishment-icon" class="icons">
+                          <p>Replenishment</p></li></a>
+                      <li><a href="editforecast.html">
+                        <img src="icon/edit.png" alt="edit forecast" class="icons">
+                          <p>Edit Forecast</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/phonebook.png" alt="edit Catalog" class="icons">
+                          <p>Catalog</p>
+                        <img src="icon/menu-arrow.png" class="submenu" onclick="openmenu()"></li></a>
+                        <div class="submenu" id="catalog-menu">
+                            <ul>
+                                <li><a href="vendors.html">Vendors</a></li>
+                                <li class="heading">Variants/Bundles</li>
+                                <li class="side"><a href="forecastsetting.html">Forecast Setting</a></li>
+                                <li class="side"><a href="vendorattributes.html">Vendor Attributes</a></li>
+                                <li class="side"><a href="listing.html">Listings</a></li>
+                                <li class="side"><a href="#">Warehouses</a></li>
+                                <li class="side"><a href="#">bundles</a></li>
+                                <li class="side"><a href="#">Assembles</a></li>
+                            </ul>
+                        </div>
+                      <li><a href="#">
+                        <img src="icon/clipboard.png" alt="stock orders" class="icons">
+                          <p>Stock Orders</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/shop.png" alt="Overstock" class="icons">
+                          <p>Overstock</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/calculator.png" alt="open-to-Buy" class="icons">
+                          <p>Open-to-Buy</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/report.png" alt="reports" class="icons">
+                          <p>Reports</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/exit.png" alt="hide labels" class="icons">
+                          <p>Hide Labels</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/refresh.png" alt="Sync" class="icons">
+                          <p>Sync</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/account.png" alt="account" class="icons">
+                          <p>Account</p></li></a>
+                </ul>
+            </div>
+        </div>
+        <div class="subcontainer">
+            <div class="topbox">
+                <div class="heading">
+                   <p>Catalog > Variants/Bundles</p> 
+                </div>
+                <div class="filter-selectbox">
+                    <select name="forecast" id="forcast-action">
+                        <option value="#">Warehouses</option>
+                        <option value="#">Forecast Setting</option>
+                        <option value="#">Vendor Attributes</option>
+                        <option value="#">Listings</option>
+                        <option value="#">bundles</option>
+                        <option value="#">Assembles</option>
+                    </select>
+                </div>
+                <div class="filter-serachbox"> <form><input type="submit" value="filter" class="search-filter"><input type="search" name="input-filter" class="input-filter"></form></div>
+            </div>
+            <div class="settings-replenishment" id="settings-replenishment"><img src="icon/settings.png"/></div>
+            <div class="more-tools" id="more-tools">
+                <h2>Hide / Visible Column</h2>
+                <table class="show">
+                    <tr>
+                        <td><a onclick="editforcast('grossweight')" id="grossweight">Gross Weight</a></td>
+                    </tr>
+                    <tr>
+                        <td><a onclick="editforcast('brand')" id="brand">Brand</a></td>
+                    </tr>
+                   <tr>
+                    <td><a onclick="editforcast('category')" id="category">Category</a></tr></td>
+                </tr> 
+                <tr>
+                    <td><a onclick="editforcast('tags')" id="tags">Cost Price Currency</a></tr></td>
+                </tr> 
+                <tr>
+                    <td><a onclick="editforcast('iptag')" id="iptag">Ip Tag</a></tr></td>
+                </tr> 
+                <tr>
+                    <td><a onclick="editforcast('cbm')" id="cbm">CBM</a></tr></td>
+                </tr> 
+                
+                </table>
+            </div>
+            <div class="replenishment-datatb">
+                <table>
+                    <tr>
+                        <td>  <input type="checkbox"
+                            name="selectall"
+                            id="selectall" 
+                            value="1" class="selectall" onchange="selectall()"></td>
+                            <td class="name">Name</td>
+                        <td class="warehouse">Warehouse</td>
+                        <td class="stock">Stock</td>
+                        <td class="ltime">Lead Time</td>
+                        <td class="atime">Assembly Time By</td>
+                        <td class="acycle">Assembly Cycle</td>
+                        <td class="dos">Days of Stock</td>
+                        <td class="minss"> Min Safety Stock</td>
+                        <td class="max-stock">Max Stock </td>
+                        <td class="order-limit">Order Limit</td>
+                        <td class="tuom">Transfer UOM</td>
+                        <td class="calert">Custom Alert</td>
+                        <td class="ealert">Enable Alert</td>
+                        <td class="nia">Notify in Advance </td>
+                    </tr>
+                    <tr>
+                        <td>  <input type="checkbox"
+                            name="selectall"
+                            id="selectall" 
+                            value="1" class="selectall" onchange="selectall()"></td>
+                            <td class="name">Name <button class="popup-btn">show</button>
+                                <section class="popup">
+                                  <div class="popup__content">
+                                    <div class="close">
+                                      <span><img src="icon/table/close-icon.png"></span>
+                                    </div>
+                        <div class="all-tabs">
+                            <div class="header">10 Pack Cookies (SKU CP-001)</div>
+                            <div class="tap-header">
+                                <ul>
+                                    <li><a onclick="addfunction(this)" class="activetab list" id="fsetting">Forecast Settings</a>
+                                    </li><li><a onclick="addfunction(this)" 
+                                        class="list" id="vendorattr">Vendor Attributes</a></li>
+                                    <li><a onclick="addfunction(this)" id="listing"  class="list">Listings</a></li>
+                                    <li><a onclick="addfunction(this)" id="warehouse"  class="list">Warehouses</a></li>
+                                    <li><a onclick="addfunction(this)" id="production"  class="list">Bundles &amp; Production</a></li>
+                                    <li>More<span onclick="showul()"><img src="icon/table/submenu-arrow.png" alt=""></span>
+                                        <ul class="sublist">
+                                            <li><a onclick="addfunction(this)" id="onorder"  class="list">On Order</a></li>
+                                            <li><a onclick="addfunction(this)" id="history"  class="list">History</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>                                
+                            </div>
+                            <div class="forecast-area">
+                                <div class="foresta-left">
+                                    <div class="switchoff">
+                                        <label class="switch">
+                                            <input type="checkbox" checked>
+                                            <span class="slider round"></span>
+                                          </label>
+                                          <span><b>Replenishable</b></span>
+                                    </div>
+                                         
+                                      <div class="para"> <p>The replenishment is computed for replenishable variants only.</p>                              
+                                </div>
+                               
+                                <div class="foresta-right"></div>
+                            </div>
+                        </div>
+                                  </div>
+                                </section></td>
+                        <td class="warehouse">
+                            <table class="warehouse">
+                                <td>Shopify US Warehouse</td>
+                            </table>
+                            <table class="warehouse">
+                                <td>Shopify UK Warehouse</td>
+                            </table>
+                            <table class="warehouse">
+                                <td>FBA CA</td>
+                            </table>
+                            <table class="warehouse">
+                                <td>FBA MX</td>
+                            </table>
+                            <table class="warehouse">
+                                <td>FBA US</td>
+                            </table>
+                        </td>
+                        <td class="stock">
+                            <table class="stock">
+                                <td>0</td>
+                            </table>
+                            <table class="stock">
+                                <td>11</td>
+                            </table>
+                            <table class="stock">
+                                <td>0</td>
+                            </table>
+                            <table class="stock">
+                                <td>7</td>
+                            </table>
+                            <table class="stock">
+                                <td>0</td>
+                            </table>
+                        </td>
+                        <td class="ltime">
+                            <table class="ltime">
+                                <td><input type="text" name="ltime" value="14"></td>
+                            </table>
+                            <table class="ltime">
+                                <td><input type="text" name="ltime" value="3"></td>
+                            </table>
+                            <table class="ltime">
+                                <td><input type="text" name="ltime" value="12"></td>
+                            </table>
+                            <table class="ltime">
+                                <td><input type="text" name="ltime" value="1"></td>
+                            </table>
+                            <table class="ltime">
+                                <td><input type="text" name="ltime" value="9"></td>
+                            </table>
+                        </td>
+                        <td class="atime">
+                            <table class="atime">
+                                <td><input type="text" name="atime" value="" readonly></td>
+                            </table>
+                            <table class="atime">
+                                <td><input type="text" name="atime" value="" readonly></td>
+                            </table>
+                            <table class="atime">
+                                <td><input type="text" name="atime" value="" readonly></td>
+                            </table>
+                            <table class="atime">
+                                <td><input type="text" name="atime" value="" readonly></td>
+                            </table>
+                            <table class="atime">
+                                <td><input type="text" name="atime" value="" readonly></td>
+                            </table>
+                        </td>
+                        <td class="acycle">
+                            <table class="acycle">
+                                <td><input type="text" name="acycle" value="" readonly></td>
+                            </table>
+                            <table class="acycle">
+                                <td><input type="text" name="acycle" value="" readonly></td>
+                            </table>
+                            <table class="acycle">
+                                <td><input type="text" name="acycle" value="" readonly></td>
+                            </table>
+                            <table class="acycle">
+                                <td><input type="text" name="acycle" value="" readonly></td>
+                            </table>
+                            <table class="acycle">
+                                <td><input type="text" name="acycle" value="" readonly></td>
+                            </table>
+                        </td>
+                        <td class="dos">
+                            <table class="dos">
+                                <td><input type="text" name="dos" value="30"></td>
+                            </table>
+                            <table class="dos">
+                                <td><input type="text" name="dos" value="30"></td>
+                            </table>
+                            <table class="dos">
+                                <td><input type="text" name="dos" value="30"></td>
+                            </table>
+                            <table class="dos">
+                                <td><input type="text" name="dos" value="30"></td>
+                            </table>
+                            <table class="dos">
+                                <td><input type="text" name="dos" value="30"></td>
+                            </table>
+                        </td>
+                        <td class="minss">
+                            <table class="minss">
+                                <td><input type="text" name="minss" value=""></td>
+                            </table>
+                            <table class="minss">
+                                <td><input type="text" name="minss" value=""></td>
+                            </table>
+                            <table class="minss">
+                                <td><input type="text" name="minss" value=""></td>
+                            </table>
+                            <table class="minss">
+                                <td><input type="text" name="minss" value=""></td>
+                            </table>
+                            <table class="minss">
+                                <td><input type="text" name="minss" value=""></td>
+                            </table>
+                        </td>
+                        <td class="max-stock">
+                            <table class="max-stock">
+                                <td><input type="text" name="minss" value=""></td>
+                            </table>
+                            <table class="max-stock">
+                                <td><input type="text" name="minss" value=""></td>
+                            </table>
+                            <table class="max-stock">
+                                <td><input type="text" name="minss" value=""></td>
+                            </table>
+                            <table class="max-stock">
+                                <td><input type="text" name="minss" value=""></td>
+                            </table>
+                            <table class="max-stock">
+                                <td><input type="text" name="minss" value=""></td>
+                            </table>
+                        </td>
+                        <td class="order-limit">
+                            <table class="order-limit">
+                               <td> </td>
+                            </table>
+                            <table class="order-limit">
+                                <td> </td>
+                             </table>
+                             <table class="order-limit">
+                                <td> </td>
+                             </table>
+                             <table class="order-limit">
+                                <td></td>
+                             </table>
+                             <table class="order-limit">
+                                <td></td>
+                             </table>
+                        </td>
+                        <td class="tuom">
+                            <table class="tuom">
+                                <td><input type="text" name="tuom" value=""></td>
+                            </table>
+                            <table class="tuom">
+                                <td><input type="text" name="tuom" value=""></td>
+                            </table>
+                            <table class="tuom">
+                                <td><input type="text" name="tuom" value=""></td>
+                            </table>
+                            <table class="tuom">
+                                <td><input type="text" name="tuom" value=""></td>
+                            </table>
+                            <table class="tuom">
+                                <td><input type="text" name="tuom" value=""></td>
+                            </table>
+                        </td>
+                        <td class="calert">
+                            <table class="calert">
+                                <td><input type="checkbox" name="calert" value="1" class="select-control" id="m1" onchange="enablebox(this)"></td>
+                            </table>
+                            <table class="calert">
+                                <td><input type="checkbox" name="calert" value="1" class="select-control" id="m2" onchange="enablebox(this)"></td>
+                            </table>
+                            <table class="calert">
+                                <td><input type="checkbox" name="calert" value="1" class="select-control" id="m3" onchange="enablebox(this)"></td>
+                            </table>
+                            <table class="calert">
+                                <td><input type="checkbox" name="calert" value="1" class="select-control" id="m4" onchange="enablebox(this)"></td>
+                            </table>
+                            <table class="calert">
+                                <td><input type="checkbox" name="calert" value="1"  class="select-control" id="m4" onchange="enablebox(this)"></td>
+                            </table>
+                        </td>
+                        <td class="ealert">
+                            <table class="ealert">
+                                <td><input type="checkbox" name="calert" value="1" class="m1" checked disabled="disabled"></td>
+                        </table>
+                        <table class="ealert">
+                            <td><input type="checkbox" name="calert" value="1" class="m2" checked disabled="disabled"></td>
+                        </table>
+                        <table class="ealert">
+                            <td><input type="checkbox" name="calert" value="1" class="m3" checked disabled="disabled"></td>
+                        </table>
+                            <table class="ealert">
+                        <td><input type="checkbox" name="calert" value="1" class="m4" checked disabled="disabled"></td>
+                            </table>
+                         <table class="ealert">
+                        <td><input type="checkbox" name="calert" value="1" class="m5" checked disabled="disabled"></td>
+                        </table>
+                    </td>
+                <td>
+                        <table class="nia">
+                                <td><input type="checkbox" name="nia" value="1" class="m1" checked disabled="disabled"></td>
+                        </table>
+                        <table class="nia">
+                            <td><input type="checkbox" name="nia" value="1" class="m2" checked disabled="disabled"></td>
+                        </table>
+                        <table class="nia">
+                            <td><input type="checkbox" name="nia" value="1" class="m3" checked disabled="disabled"></td>
+                        </table>
+                            <table class="nia">
+                        <td><input type="checkbox" name="nia" value="1" class="m4" checked disabled="disabled"></td>
+                            </table>
+                         <table class="nia">
+                        <td><input type="checkbox" name="nia" value="1" class="m5" checked disabled="disabled"></td>
+                        </table>
+                    </td>
+                    
+       
+                </table>
+            </div>
+            <div class="replenishment-feature">
+                <div class="left-side">
+                    <!-- <div class="button button-middle"><a href="newvendor.html">New Vendor</a></div> -->
+                    <!-- <div class="button button-middle"><a href="#">Export</a></div> -->
+                    <div class="select-box">
+                        <select name="import" id="import">
+                            <option value="">Import</option>
+                            <option value="vendor-attributes">Vendor Attributes</option>                        
+                            <option value="vendors">Vendors</option>
+                        </select>
+                    </div>
+                    <div class="select-box">    
+                    <select name="export" id="export">
+                        <option value="">Export</option>
+                        <option value="vairant-bundle">Export Variants/Bundles</option>                        
+                        <option value="withlist">Export Variants/Bundles with Listings</option>
+                    </select>
+                </div>
+                </div>
+               <div class="right-side">
+                <div class="entry-box">
+                    <select name="entries" id="entries" >
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
+                <div class="first-page">
+                    <a href="">First</a>
+                </div>
+                <div class="left">
+                   <a href="#"><img src="icon/left.png"></a>
+                </div>
+                <div class="page-info">page 1/1</div>
+                   <div class="right">
+                    <a href="#"><img src="icon/right.png"></a>
+                </div>
+ 
+                 </div>
+                </div>
+               
+               </div>
+                
+            </div>
+    </div>
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="js/jquery3.7.1.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script> -->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://cdn.canvasjs.com/jquery.canvasjs.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

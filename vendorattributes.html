@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory planner > Vendor Attributes</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="menus">
+                <ul class="menu-listing">
+                    <li><a href="index.html">
+                        <img src="icon/home.png" alt="overview-icon" class="icons">
+                        <p>Overview</p>
+                    </li></a>
+                    <li><a href="replenishment.html">
+                        <img src="icon/data-security.png" alt="replenishment-icon" class="icons">
+                          <p>Replenishment</p></li></a>
+                      <li><a href="editforecast.html">
+                        <img src="icon/edit.png" alt="edit forecast" class="icons">
+                          <p>Edit Forecast</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/phonebook.png" alt="edit Catalog" class="icons">
+                          <p>Catalog</p>
+                        <img src="icon/menu-arrow.png" class="submenu" onclick="openmenu()"></li></a>
+                        <div class="submenu" id="catalog-menu">
+                            <ul>
+                                <li><a href="vendors.html">Vendors</a></li>
+                                <li class="heading">Variants/Bundles</li>
+                                <li class="side"><a href="forecastsetting.html">Forecast Setting</a></li>
+                                <li class="side"><a href="vendorattributes.html">Vendor Attributes</a></li>
+                                <li class="side"><a href="listing.html">Listings</a></li>
+                                <li class="side"><a href="#">Warehouses</a></li>
+                                <li class="side"><a href="#">bundles</a></li>
+                                <li class="side"><a href="#">Assembles</a></li>
+                            </ul>
+                        </div>
+                      <li><a href="#">
+                        <img src="icon/clipboard.png" alt="stock orders" class="icons">
+                          <p>Stock Orders</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/shop.png" alt="Overstock" class="icons">
+                          <p>Overstock</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/calculator.png" alt="open-to-Buy" class="icons">
+                          <p>Open-to-Buy</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/report.png" alt="reports" class="icons">
+                          <p>Reports</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/exit.png" alt="hide labels" class="icons">
+                          <p>Hide Labels</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/refresh.png" alt="Sync" class="icons">
+                          <p>Sync</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/account.png" alt="account" class="icons">
+                          <p>Account</p></li></a>
+                </ul>
+            </div>
+        </div>
+        <div class="subcontainer">
+            <div class="topbox">
+                <div class="heading">
+                   <p>Catalog > Variants/Bundles</p> 
+                </div>
+                <div class="filter-selectbox">
+                    <select name="forecast" id="forcast-action">
+                        <option value="#">Vendor Attributes</option>
+                        <option value="#">Forecast Setting</option>
+                        <option value="#">Listings</option>
+                        <option value="#">Warehouses</option>
+                        <option value="#">bundles</option>
+                        <option value="#">Assembles</option>
+                    </select>
+                </div>
+                <div class="filter-serachbox"> <form><input type="submit" value="filter" class="search-filter"><input type="search" name="input-filter" class="input-filter"></form></div>
+            </div>
+            <div class="settings-replenishment" id="settings-replenishment"><img src="icon/settings.png"/></div>
+            <div class="more-tools" id="more-tools">
+                <h2>Hide / Visible Column</h2>
+                <table class="show">
+                    <tr>
+                        <td><a onclick="editforcast('vendor-image')" id="vendor-image">Vendor Image</a></td>
+                    </tr>
+                    <tr>
+                        <td><a onclick="editforcast('vrefernce')" id="vrefernce">Vendor Reference</a></td>
+                    </tr>
+                   <tr>
+                    <td><a onclick="editforcast('vproductname')" id="vproductname">Vendor Product Name</a></tr></td>
+                </tr> 
+                <tr>
+                    <td><a onclick="editforcast('cpricecurrency')" id="cpricecurrency">Cost Price Currency</a></tr></td>
+                </tr> 
+                <tr>
+                    <td><a onclick="editforcast('landcprice')" id="landcprice">Landing Cost Price</a></tr></td>
+                </tr> 
+                <tr>
+                    <td><a onclick="editforcast('moq')" id="moq">moq type</a></tr></td>
+                </tr> 
+                
+                </table>
+            </div>
+            <div class="replenishment-datatb">
+                <table>
+                    <tr>
+                        <td>  <input type="checkbox"
+                            name="selectall"
+                            id="selectall" 
+                            value="1" class="selectall" onchange="selectall()"></td>
+                            <td class="vendor-image">Image</td>
+                        <td class="variants">Variants</td>
+                        <td class="vendor">Vendor</td>
+                        <td class="vrefernce">Vendor Reference</td>
+                        <td class="vproductname">Vendor Product Name</td>
+                        <td class="cpricecurrency">Cost Price Currency</td>
+                        <td class="cprice"> Cost Price</td>
+                        <td class="landcprice">Landing Cost Price</td>
+                        <td class="moq">MOQ</td>
+                        <td class="uom">UOM</td>
+                        <td class="tier-prices">Tier Prices</td>
+                    </tr>
+                    <tr>
+                        <tr>
+                            <td>  <input type="checkbox"
+                                name="selectall"
+                                id="selectall" 
+                                value="1" class="selectall" onchange="selectall()"></td>
+                                <td class="vendor-image"><img src="image/jacket.jpg" class="vendor-image"/></td>
+                            <td class="variants">
+                                <p>Bulk - Flour 10kg</p>
+                                <p class="sub-name"><b>SKU</b>&nbsp;BF-001&nbsp;<b>Barcode</b>&nbsp;1823</p>
+                            </td>
+                            <td class="vendor">
+                                <button>+</button>
+                                <p>Supplier china</p>
+                                <p class="sub-name">Shopify UK</p>
+                            </td>
+                            <td class="vrefernce"><input type="text" name="vrefernce" id="vreference" value=""></td>
+                            <td class="vproductname"><input type="text" name="vpname" id="vpname" value=""></td>
+                            <td class="cpricecurrency"><input type="number" name="cpcurrency" id="cpcurrency" value=""></td>
+                            <td class="cprice"><input type="number" name="costprice" id="costprice" value="27"></td>
+                            <td class="landcprice"><input type="number" name="landcprice" id="landcprice" value=""></td>
+                            <td class="moq"><input type="number" name="moq" id="moq"></td>
+                            <td class="uom"><input type="number" name="uom" id="uom"></td>
+                            <td class="tier-prices">none</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="replenishment-feature">
+                <div class="left-side">
+                    <div class="button button-middle"><a href="newvendor.html">New Vendor</a></div>
+                    <div class="button button-middle"><a href="#">Export</a></div>
+                    <div class="select-box">
+                        <select name="import" id="import">
+                            <option value="">Import</option>
+                            <option value="vendor-attributes">Vendor Attributes</option>                        
+                            <option value="vendors">Vendors</option>
+                        </select>
+                    </div>
+                </div>
+               <div class="right-side">
+                <div class="entry-box">
+                    <select name="entries" id="entries" >
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
+                <div class="first-page">
+                    <a href="">First</a>
+                </div>
+                <div class="left">
+                   <a href="#"><img src="icon/left.png"></a>
+                </div>
+                <div class="page-info">page 1/1</div>
+                   <div class="right">
+                    <a href="#"><img src="icon/right.png"></a>
+                </div>
+ 
+                 </div>
+                </div>
+               
+               </div>
+                
+            </div>
+    </div>
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="js/jquery3.7.1.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script> -->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://cdn.canvasjs.com/jquery.canvasjs.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

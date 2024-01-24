@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory planner > Replenishment</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="menus">
+                <ul class="menu-listing">
+                    <li><a href="index.html">
+                        <img src="icon/home.png" alt="overview-icon" class="icons">
+                        <p>Overview</p>
+                    </li></a>
+                    <li><a href="replenishment.html">
+                        <img src="icon/data-security.png" alt="replenishment-icon" class="icons">
+                          <p>Replenishment</p></li></a>
+                      <li><a href="editforecast.html">
+                        <img src="icon/edit.png" alt="edit forecast" class="icons">
+                          <p>Edit Forecast</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/phonebook.png" alt="edit Catalog" class="icons">
+                          <p>Catalog</p>
+                        <img src="icon/menu-arrow.png" class="submenu" onclick="openmenu()"></li></a>
+                        <div class="submenu" id="catalog-menu">
+                            <ul>
+                                <li><a href="vendors.html">Vendors</a></li>
+                                <li class="heading">Variants/Bundles</li>
+                                <li class="side"><a href="forecastsetting.html">Forecast Setting</a></li>
+                                <li class="side"><a href="vendorattributes.html">Vendor Attributes</a></li>
+                                <li class="side"><a href="listing.html">Listings</a></li>
+                                <li class="side"><a href="#">Warehouses</a></li>
+                                <li class="side"><a href="#">bundles</a></li>
+                                <li class="side"><a href="#">Assembles</a></li>
+                            </ul>
+                        </div>
+                      <li><a href="#">
+                        <img src="icon/clipboard.png" alt="stock orders" class="icons">
+                          <p>Stock Orders</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/shop.png" alt="Overstock" class="icons">
+                          <p>Overstock</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/calculator.png" alt="open-to-Buy" class="icons">
+                          <p>Open-to-Buy</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/report.png" alt="reports" class="icons">
+                          <p>Reports</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/exit.png" alt="hide labels" class="icons">
+                          <p>Hide Labels</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/refresh.png" alt="Sync" class="icons">
+                          <p>Sync</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/account.png" alt="account" class="icons">
+                          <p>Account</p></li></a>
+                </ul>
+            </div>
+        </div>
+        <div class="subcontainer">
+            <div class="topbox">
+                <div class="heading">
+                   <p>Catalog > Vendors</p> 
+                </div>
+                <div class="filter-serachbox"> <form><input type="submit" value="filter" class="search-filter"><input type="search" name="input-filter" class="input-filter"></form></div>
+            </div>
+            <div class="settings-replenishment" id="settings-replenishment"><img src="icon/settings.png"/></div>
+            <div class="more-tools" id="more-tools">
+                <h2>Hide / Visible Column</h2>
+                <table class="show">
+                    <tr>
+                        <td><a onclick="editforcast('variants')" id="variants">variants</a></td>
+                    </tr>
+                    <tr>
+                        <td><a onclick="editforcast('product')" id="product">product</a></td>
+                    </tr>
+                   <tr>
+                    <td><a onclick="editforcast('stock')" id="stock">stock</a></tr></td>
+                </tr> 
+                <tr>
+                    <td><a onclick="editforcast('discount')" id="discount">discount</a></tr></td>
+                </tr> 
+                <tr>
+                    <td><a onclick="editforcast('default-tax')" id="default-tax">default tax</a></tr></td>
+                </tr> 
+                <tr>
+                    <td><a onclick="editforcast('moq-type')" id="moq-type">moq type</a></tr></td>
+                </tr> 
+                
+                </table>
+            </div>
+            <div class="replenishment-datatb">
+                <table>
+                    <tr>
+                        <td>  <input type="checkbox"
+                            name="selectall"
+                            id="selectall" 
+                            value="1" class="selectall" onchange="selectall()"></td>
+                        <td class="name">Name</td>
+                        <td class="email">Email</td>
+                        <td class="bundle">#Bundles</td>
+                        <td class="variants">#Variants</td>
+                        <td class="product">#Products</td>
+                        <td class="stock">Enabled</td>
+                        <td class="discount">Discount</td>
+                        <td class="default-tax">Default Tax</td>
+                        <td class="moq-type">MOQ Type</td>
+                        <td class="minbudget">Min Purchase Budget</td>
+                        <td class="minquality">Min Purchase Quantity</td>
+                        <td class="shipmethod">Shipment Method</td>
+                        <td class="paymentterm">Payment Terms</td>
+                        <td class="internal-note">Internal Notes</td>
+                        <td class="ponotes">Default PO Notes</td>
+                        <td class="vendoraddress">Vendor Address</td>
+                        <td class="source">Source</td>
+                        <td class="removed">Removed</td>
+                    </tr>
+                    <tr>
+                        <td>  <input type="checkbox"
+                            name="selectall"
+                            id="selectall" 
+                            value="1" class="single-select"></td>
+                        <td class="name">                            <p>Cap</p>
+                            <p class="details">102 variants / 2 bundles / 5 assemblies / 14 products
+                            </p></td>
+                        <td class="email"><input type="email" name="email" id="vendor-mails"></td>
+                        <td class="bundle">2</td>
+                        <td class="variants">102</td>
+                        <td class="product">14</td>
+                        <td class="stock"><input type="checkbox"
+                            name="stockselect"
+                            id="stockselect" 
+                            value="1" class="selectall" onchange="disableallselect()"></td>
+                        <td class="discount"><input type="text" name="discount"></td>
+                        <td class="default-tax"><input type="text" name="defaulttax"></td>
+                        <td class="moq-type"><select name="moq-type" id="moqtype">
+                            <option value="disabled">Disabled</option>
+                            <option value="forvarients">For Variants</option>
+                            <option value="forproducts">For Products</option>
+                            <option value="forpurchaseorders">For purchases orders </option>
+                        </select></td>
+                        <td class="minbudget"><input type="text" name="minbudget"></td>
+                        <td class="minquality"><input type="text" name="minquality"></td>
+                        <td class="shipmethod"><input type="text" name="ship-method"></td>
+                        <td class="paymentterm"><input type="text" name="payment-term"></td>
+                        <td class="internal-note"><textarea name="internalnotes" id="" cols="20" rows="4"></textarea></td>
+                        <td class="ponotes"><textarea name="ponotes" id="" cols="20" rows="4"></textarea></td>
+                        <td class="vendoraddress"><textarea name="vaddress" id="" cols="20" rows="4"></textarea></td>
+                        <td class="source">Shopify US</td>
+                        <td class="removed">Removed</td>
+                    </tr>
+
+                    <tr>
+                        <td>  <input type="checkbox"
+                            name="selectall"
+                            id="selectall" 
+                            value="1" class="single-select"></td>
+                        <td class="name">Name</td>
+                        <td class="email"><input type="email" name="email" id="vendor-mails"></td>
+                        <td class="bundle">2</td>
+                        <td class="variants">102</td>
+                        <td class="product">14</td>
+                        <td class="stock"><input type="checkbox"
+                            name="stockselect"
+                            id="stockselect" 
+                            value="1" class="stockselect" onchange="disableallselect()"></td>
+                        <td class="discount"><input type="text" name="discount"></td>
+                        <td class="default-tax"><input type="text" name="defaulttax"></td>
+                        <td class="moq-type"><select name="moq-type" id="moqtype">
+                            <option value="disabled">Disabled</option>
+                            <option value="forvarients">For Variants</option>
+                            <option value="forproducts">For Products</option>
+                            <option value="forpurchaseorders">For purchases orders </option>
+                        </select></td>
+                        <td class="minbudget"><input type="text" name="minbudget"></td>
+                        <td class="minquality"><input type="text" name="minquality"></td>
+                        <td class="shipmethod"><input type="text" name="ship-method"></td>
+                        <td class="paymentterm"><input type="text" name="payment-term"></td>
+                        <td class="internal-note"><textarea name="internalnotes" id="" cols="20" rows="4"></textarea></td>
+                        <td class="ponotes"><textarea name="ponotes" id="" cols="20" rows="4"></textarea></td>
+                        <td class="vendoraddress"><textarea name="vaddress" id="" cols="20" rows="4"></textarea></td>
+                        <td class="source">Shopify US</td>
+                        <td class="removed">Removed</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="replenishment-feature">
+                <div class="left-side">
+                    <div class="button button-middle"><a href="newvendor.html">New Vendor</a></div>
+                    <div class="button button-middle"><a href="#">Export</a></div>
+                    <div class="select-box">
+                        <select name="import" id="import">
+                            <option value="">Import</option>
+                            <option value="vendor-attributes">Vendor Attributes</option>                        
+                            <option value="vendors">Vendors</option>
+                        </select>
+                    </div>
+                </div>
+               <div class="right-side">
+                <div class="entry-box">
+                    <select name="entries" id="entries" >
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
+                <div class="first-page">
+                    <a href="">First</a>
+                </div>
+                <div class="left">
+                   <a href="#"><img src="icon/left.png"></a>
+                </div>
+                <div class="page-info">page 1/1</div>
+                   <div class="right">
+                    <a href="#"><img src="icon/right.png"></a>
+                </div>
+ 
+                 </div>
+                </div>
+               
+               </div>
+                
+            </div>
+    </div>
+
+    <script src="js/jquery3.7.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.canvasjs.com/jquery.canvasjs.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

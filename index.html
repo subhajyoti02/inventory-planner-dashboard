@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory planner > Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="menus">
+                <ul class="menu-listing">
+                    <li><a href="index.html">
+                        <img src="icon/home.png" alt="overview-icon" class="icons">
+                        <p>Overview</p>
+                    </li></a>
+                    <li><a href="replenishment.html">
+                        <img src="icon/data-security.png" alt="replenishment-icon" class="icons">
+                          <p>Replenishment</p></li></a>
+                      <li><a href="editforecast.html">
+                        <img src="icon/edit.png" alt="edit forecast" class="icons">
+                          <p>Edit Forecast</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/phonebook.png" alt="edit Catalog" class="icons">
+                          <p>Catalog</p>
+                        <img src="icon/menu-arrow.png" class="submenu" onclick="openmenu()"></li></a>
+                        <div class="submenu" id="catalog-menu">
+                            <ul>
+                                <li><a href="vendors.html">Vendors</a></li>
+                                <li><a href="vendorattributes.html">Variants/Bundles</a></li>
+                                <li class="heading">Forecast Setting</li>
+                                <li class="side"><a href="vendorattributes.html">Vendor Attributes</a></li>
+                                <li class="side"><a href="listing.html">Listings</a></li>
+                                <li class="side"><a href="#">Warehouses</a></li>
+                                <li class="side"><a href="#">bundles</a></li>
+                                <li class="side"><a href="#">Assembles</a></li>
+                            </ul>
+                        </div>
+                      <li><a href="#">
+                        <img src="icon/clipboard.png" alt="stock orders" class="icons">
+                          <p>Stock Orders</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/shop.png" alt="Overstock" class="icons">
+                          <p>Overstock</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/calculator.png" alt="open-to-Buy" class="icons">
+                          <p>Open-to-Buy</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/report.png" alt="reports" class="icons">
+                          <p>Reports</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/exit.png" alt="hide labels" class="icons">
+                          <p>Hide Labels</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/refresh.png" alt="Sync" class="icons">
+                          <p>Sync</p></li></a>
+                      <li><a href="#">
+                        <img src="icon/account.png" alt="account" class="icons">
+                          <p>Account</p></li></a>
+                </ul>
+            </div>
+        </div>
+        <div class="subcontainer">
+            <div class="topbox">
+                <div class="heading">
+                   <p>Overview</p> 
+                </div>
+                <div class="select-box">
+                    <select name="choose-page" id="choosepage" class="choosepage">
+                      <option value="all-warehouses">Warehouses 1
+                        </option>                        <option value="all-warehouses">Warehouses 2
+                        </option>                        <option value="all-warehouses">Warehouses 3
+                        </option>                        <option value="all-warehouses">Warehouses 4
+                        </option>                        <option value="all-warehouses">Warehouses 5
+                        </option>                        <option value="all-warehouses">Warehouses 6
+                        </option>                        <option value="all-warehouses">Warehouses 7
+                        </option>                        
+                    </select>
+                </div>
+            </div>
+            <div class="first-activity-part">
+                <div class="box-one">
+                    <h2>Stock</h2>
+                    <div class="count-data">
+                        <div class="alldatas">
+                            <div class="col"><div class="name">Variants </div><div class="cost">117</div></div>                            <div class="col"><div class="name">Variants in Stock </div><div class="cost">59</div></div>                            <div class="col"><div class="name">Stock Units</div><div class="cost">48,247</div></div>                            <div class="col"><div class="name">Stock Cost</div><div class="cost">£116,718</div></div>                            <div class="col"><div class="name">Stock Retail </div><div class="cost">£911,802</div></div>
+
+                        </div>
+                        <div class="counter">
+                            <div class="counter-head"><p>Stock Retail By Vendor</p></div>
+                            <div class="counter-animation">
+                                <div><span class="count">1000</span></div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="box-two">
+                    <h2>Purchases</h2>
+                    <div class="count-data">
+                        <div class="alldatas">
+                            <div class="col"><div class="name">Variants </div><div class="cost">117</div></div>                            <div class="col"><div class="name">Variants in Stock </div><div class="cost">59</div></div>                            <div class="col"><div class="name">Stock Units</div><div class="cost">48,247</div></div>                            <div class="col"><div class="name">Stock Cost</div><div class="cost">£116,718</div></div>                            <div class="col"><div class="name">Stock Retail </div><div class="cost">£911,802</div></div>
+
+                        </div>
+                        <div class="counter">
+                            <div class="counter-head"><p>Stock Retail By Vendor</p></div>
+                            <div class="counter-animation">
+                                <div><span class="count">1000</span></div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="second-activity-part">
+                <div class="one">
+                    <div class="heading-one">
+                        <h2 class="auto-heading">Top Warehouses to Replenish</h2>
+                    </div>
+                    <div class="table-data">
+                        <table>
+                            <tr>
+                                <td><p>#</p></td>
+                                <td><p>Title</p></td>
+                                <td><p>Stock</p></td>
+                                <td><p>Replenish</p></td>
+                                <td><p>Cost</p></td>
+                                <td><p>Retail</p></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Peoplevox Test</td>
+                                <td> 23,832</td>
+                                <td> 9</td>
+                                <td>£0</td>
+                                <td>£990</td>
+
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Peoplevox Test</td>
+                                <td> 23,832</td>
+                                <td> 9</td>
+                                <td>£0</td>
+                                <td>£990</td>
+
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Peoplevox Test</td>
+                                <td> 23,832</td>
+                                <td> 9</td>
+                                <td>£0</td>
+                                <td>£990</td>
+
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Peoplevox Test</td>
+                                <td> 23,832</td>
+                                <td> 9</td>
+                                <td>£0</td>
+                                <td>£990</td>
+
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="buttons"><a href="#">Replenishment Report</a></div>
+                </div>
+                <div class="two">
+                    <div class="replenishment">
+                        <div class="replenishment-tb">
+                            <h2>Replenishment </h2>
+                        <table>
+                            <tr>
+                                <td><img src="icon/table/history.png" alt=""></td>
+                                <td>Peoplevox Test</td>
+                                <td> 23,832</td>
+                            </tr>
+                            <tr>
+                                <td><img src="icon/table/cash.png" alt=""></td>
+                                <td>Peoplevox Test</td>
+                                <td> 23,832</td>
+                            </tr>
+                            <tr>
+                                <td><img src="icon/table/cash.png" alt=""></td>
+                                <td>Peoplevox Test</td>
+                                <td> 23,832</td>
+                            </tr>
+                            <tr>
+                                <td><img src="icon/table/cash.png" alt=""></td>
+                                <td>Peoplevox Test</td>
+                                <td> 23,832</td>
+                            </tr>
+                        </table>
+                        </div>
+                    </div> 
+                    <div class="forecast">
+                        <div class="forecast-tb">
+                            <h2> Forecast</h2>
+                            <table>
+                                <tr>
+                                    <td><img src="icon/table/trade.png" alt=""></td>
+                                    <td>Peoplevox Test</td>
+                                    <td> 23,832</td>
+                                </tr>
+                                <tr>
+                                    <td><img src="icon/table/chart.png" alt=""></td>
+                                    <td>Peoplevox Test</td>
+                                    <td> 23,832</td>
+                                </tr>
+                            </table>
+                            <div class="forecast-chat"></div>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+            <div class="third-activity-part">
+                <div class="two">
+                    <div class="replenishment">
+                        <div class="replenishment-tb">
+                            <h2>Overstock</h2>
+                        <table>
+                            <tr>
+                                <td><img src="icon/table/storage.png" alt=""></td>
+                                <td>Peoplevox Test</td>
+                                <td> 23,832</td>
+                            </tr>
+                            <tr>
+                                <td><img src="icon/table/layer.png" alt=""></td>
+                                <td>Peoplevox Test</td>
+                                <td> 23,832</td>
+                            </tr>
+                            <tr>
+                                <td><img src="icon/table/cash.png" alt=""></td>
+                                <td>Peoplevox Test</td>
+                                <td> 23,832</td>
+                            </tr>
+                            <tr>
+                                <td><img src="icon/table/cash.png" alt=""></td>
+                                <td>Peoplevox Test</td>
+                                <td> 23,832</td>
+                            </tr>
+                        </table>
+                        </div>
+                    </div> 
+                </div>
+                <div class="one">
+                    <div class="heading-one">
+                        <h2 class="auto-heading">Top Overstocked Warehouses</h2>
+                    </div>
+                    <div class="table-data">
+                        <table>
+                            <tr>
+                                <td><p>#</p></td>
+                                <td><p>Title</p></td>
+                                <td><p>Stock</p></td>
+                                <td><p>Replenish</p></td>
+                                <td><p>Cost</p></td>
+
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Peoplevox Test</td>
+                                <td> 23,832</td>
+                                <td> 9</td>
+                                <td>£0</td>
+
+
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Peoplevox Test</td>
+                                <td> 23,832</td>
+                                <td> 9</td>
+                                <td>£0</td>
+
+
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Peoplevox Test</td>
+                                <td> 23,832</td>
+                                <td> 9</td>
+                                <td>£0</td>
+
+
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Peoplevox Test</td>
+                                <td> 23,832</td>
+                                <td> 9</td>
+                                <td>£0</td>
+   
+
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Peoplevox Test</td>
+                                <td> 23,832</td>
+                                <td> 9</td>
+                                <td>£0</td>
+   
+
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Peoplevox Test</td>
+                                <td> 23,832</td>
+                                <td> 9</td>
+                                <td>£0</td>
+   
+
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Peoplevox Test</td>
+                                <td> 23,832</td>
+                                <td> 9</td>
+                                <td>£0</td>
+   
+
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Peoplevox Test</td>
+                                <td> 23,832</td>
+                                <td> 9</td>
+                                <td>£0</td>
+   
+
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Peoplevox Test</td>
+                                <td> 23,832</td>
+                                <td> 9</td>
+                                <td>£0</td>
+   
+
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="buttons"><a href="#">Overstock Report</a></div>
+                </div>
+    
+            </div>
+            
+
+            <div class="fourth-activity-part">
+                <div class="one">
+                    <div class="heading-one">
+                        <h2 class="auto-heading">Best Sellers </h2>
+                        <select name="mode" id="mode" class="seller-mode">
+                            <option value="variants">Variants</option>
+                            <option value="vendors">Vendors</option>
+                            <option value="categories">Categories</option>
+
+                        </select>
+                    </div>
+                    <div class="table-data">
+                        <table>
+                            <tr>
+                                <td><p>#</p></td>
+                                <td><p>Title</p></td>
+                                <td><p>Sales</p></td>
+                                <td><p>COGS</p></td>
+                                <td><p>Revenue</p></td>
+
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td><p class="title">Peoplevox Test</p><p class="date">Dec 21, 2023 - Jan 19, 2024</p></td>
+                                <td> 23,832</td>
+                                <td> 9</td>
+                                <td>£0</td>
+
+
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td><p class="title">Peoplevox Test</p><p class="date">Dec 21, 2023 - Jan 19, 2024</p></td>
+                                <td> 23,832</td>
+                                <td> 9</td>
+                                <td>£0</td>
+
+
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td><p class="title">Peoplevox Test</p><p class="date">Dec 21, 2023 - Jan 19, 2024</p></td>
+                                <td> 23,832</td>
+                                <td> 9</td>
+                                <td>£0</td>
+
+
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td><p class="title">Peoplevox Test</p><p class="date">Dec 21, 2023 - Jan 19, 2024</p></td>
+                                <td> 23,832</td>
+                                <td> 9</td>
+                                <td>£0</td>
+
+
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td><p class="title">Peoplevox Test</p><p class="date">Dec 21, 2023 - Jan 19, 2024</p></td>
+                                <td> 23,832</td>
+                                <td> 9</td>
+                                <td>£0</td>
+
+
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td><p class="title">Peoplevox Test</p><p class="date">Dec 21, 2023 - Jan 19, 2024</p></td>
+                                <td> 23,832</td>
+                                <td> 9</td>
+                                <td>£0</td>
+
+
+                            </tr>
+
+                           
+                        </table>
+                    </div>
+                    <div class="buttons"><a href="#">Overstock Report</a></div>
+                </div>
+                <div class="two">
+                    <div class="replenishment">
+                        <div class="replenishment-tb">
+                            <h2>Sales</h2>
+                        <table>
+                            <tr>
+                                <td><img src="icon/table/order.png" alt=""></td>
+                                <td>orders</td>
+                                <td>0   </td>
+                            </tr>
+                            <tr>
+                                <td><img src="icon/table/grid.png" alt=""></td>
+                                <td>Units Sold</td>
+                                <td> 0</td>
+                            </tr>
+                            <tr>
+                                <td><img src="icon/table/cash.png" alt=""></td>
+                                <td>Cost of Goods Sold</td>
+                                <td>£0</td>
+                            </tr>
+                            <tr>
+                                <td><img src="icon/table/cash.png" alt=""></td>
+                                <td>Revenue </td>
+                                <td>£0</td>
+                            </tr>
+                        </table>
+                        <div class="sale-chat" style="height: 200px; width: 100%;"></div>
+                        </div>
+                    </div> 
+                </div>
+    
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery3.7.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.canvasjs.com/jquery.canvasjs.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
